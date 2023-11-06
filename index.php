@@ -1,5 +1,5 @@
 <?php
-require_once 'php/init.php';
+require_once 'resource/php/init.php';
 ?>
 
 <!doctype html>
