@@ -95,11 +95,16 @@ require_once 'resource/php/init.php';
                     <input class="btn btn-success" type="submit" value="Add"/>
                 </div>
 
+                
+
 
 
 
             </div>
         </form>
+        <?php
+            viewAll();
+        ?>
     </div>
 
 

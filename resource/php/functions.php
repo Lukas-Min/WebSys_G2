@@ -20,4 +20,70 @@ function insertSh()
         }
     }
 }
+
+function deleteSh()
+{
+    if (!empty($_POST['delete'])){
+        $delete = new delete($_POST['delete']);
+        if ($delete->deleteShoes()) {
+            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> You have deleted the shoes successfully.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+        } else {
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> Failed to delete the shoes. Please check if it\'s valid.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+        }
+    }
+}
+
+function editSh()
+{
+    if (!empty($_POST['edit'])){
+        $edit = new edit($_POST['edit']);
+        if ($edit->editShoes()) {
+            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Success!</strong> You have deleted the shoes successfully.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+        } else {
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> Failed to delete the shoes. Please check if it\'s valid.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+        }
+    }
+}
+
+
+function viewAll(){
+    $view = new view();
+    $view->viewItem();
+    $view->viewCompletedItem();
+       
+    //viewspecific product function
+    $view->viewSpecificProduct();
+
+}
+
+function commandShoes(){
+    insertSh();
+    deleteSh();
+    editSh();
+}
+
+
 ?>
+
+
+
