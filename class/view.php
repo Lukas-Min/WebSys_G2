@@ -100,7 +100,6 @@ public function viewSpecificProduct()
 
     $searchKeyword = isset($_POST['search_keyword']) ? strtolower($_POST['search_keyword']) : "";
 
-  
     echo "<h3 class='mb-4 mt-5'>Search for a Product</h3>";
     echo "<form method='POST'>";
     echo "<div class='form-group'>";
@@ -111,12 +110,14 @@ public function viewSpecificProduct()
     echo "</form>";
 
     if (!empty($searchKeyword)) {
-     
         $sql = "SELECT * FROM `inventory_tbl` WHERE 
-                id = :keyword";
+                LOWER(id) LIKE :keyword OR
+                LOWER(brand) LIKE :keyword OR
+                LOWER(product_name) LIKE :keyword OR
+                LOWER(color) LIKE :keyword";
 
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':keyword', $searchKeyword, PDO::PARAM_INT);
+        $stmt->bindValue(':keyword', "%$searchKeyword%", PDO::PARAM_STR);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -149,23 +150,11 @@ public function viewSpecificProduct()
 
             echo "</tbody></table>";
         } else {
-            echo "No results found for the provided ID.";
-        }
-    
-        } else {
-           
-            echo "<h3 class='mb-4 mt-5'>Search for a Product</h3>";
-            echo "<form method='POST'>";
-            echo "<div class='form-group'>";
-            echo "<label for='search_id'>Enter Product ID:</label>";
-            echo "<input type='text' name='search_id' class='form-control' placeholder='Enter Product ID' />";
-            echo "</div>";
-            echo "<button type='submit' class='btn btn-primary'>Search</button>";
-            echo "</form>";
+            echo "No results found for the provided keyword.";
         }
     }
 }
-
+}
 
 
 
