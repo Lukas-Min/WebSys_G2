@@ -19,6 +19,7 @@ require_once 'resource/php/init.php';
     <div class="container mt-5">
         <?php
             insertSh();
+            commandShoes();
         ?>
 
         <form action="" method="POST"> 
@@ -81,14 +82,6 @@ require_once 'resource/php/init.php';
                     <input class="form-control" type="text" name="prices" placeholder="Insert a price" required />
                 </div>
 
-                <!--Status-->
-                <!-- <div class="col-md-6 form-group">
-                    <select class="form-control" name="statuss" required>
-                        <option value="" disabled selected>Status</option>
-                            <option value="Available">Available</option>
-                            <option value="Sold">Sold</option>
-                    </select>
-                </div> -->
 
                 <!-- Button -->
                 <div class="col-md">
@@ -100,6 +93,10 @@ require_once 'resource/php/init.php';
 
             </div>
         </form>
+
+        <?php
+            viewAll();
+        ?>
     </div>
 
 
