@@ -100,7 +100,7 @@ public function viewSpecificProduct()
 
     $searchKeyword = isset($_POST['search_keyword']) ? strtolower($_POST['search_keyword']) : "";
 
-    // Display the search form
+  
     echo "<h3 class='mb-4 mt-5'>Search for a Product</h3>";
     echo "<form method='POST'>";
     echo "<div class='form-group'>";
@@ -111,7 +111,7 @@ public function viewSpecificProduct()
     echo "</form>";
 
     if (!empty($searchKeyword)) {
-        // Build a SQL query to search for an exact match on the ID field
+     
         $sql = "SELECT * FROM `inventory_tbl` WHERE 
                 id = :keyword";
 
