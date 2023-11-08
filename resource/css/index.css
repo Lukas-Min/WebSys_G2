@@ -1,0 +1,42 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0%;
+}
+.bg-custom{
+    background-color: black;
+}
+.text-custom{
+    color: black;
+}
+.page-title {
+    font-family: 'Pacifico', cursive;
+}
+.shoe-title{
+    font-family: 'Lobster', sans-serif;
+}
+.title-available,
+.add-shoe {
+    font-family: 'Agbalumo', regular;
+}
+
+.btn-group {
+    display: flex;
+}
+
+.btn-group .btn {
+    flex: 1;
+}
+
+.rounded-table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+body{
+    background-image:linear-gradient( rgba(0, 0, 0, 0.61), rgb(0, 0, 0)),url(../img/bg-1.jpg);
+    background-size: cover;
+    max-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Make the background image fixed */
+    background-position: center;
+}
