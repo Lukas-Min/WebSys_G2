@@ -48,7 +48,7 @@ function searchBarNotif()
 ?>
 
 <!-- Insert Success Modal -->
-<div class="modal" id="modalSuccess" tabindex="-1">
+<!-- <div class="modal" id="modalSuccess" tabindex="-1">\
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -66,10 +66,10 @@ function searchBarNotif()
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Insert Fail Modal -->
-<div class="modal" id="modalFail" tabindex="-1">
+<!-- <div class="modal" id="modalFail" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,10 +87,10 @@ function searchBarNotif()
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Delete Success Modal -->
-<div class="modal" id="modalDelete" tabindex="-1">
+<!-- <div class="modal" id="modalDelete" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -108,10 +108,10 @@ function searchBarNotif()
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Search Failed Shoe Modal -->
-<div class="modal" id="modalSearchFail" tabindex="-1">
+<!-- <div class="modal" id="modalSearchFail" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,4 +129,4 @@ function searchBarNotif()
             </div>
         </div>
     </div>
-</div>
+</div> -->

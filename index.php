@@ -13,7 +13,7 @@ require_once 'resource/php/init.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Montserrat&family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="resource/img/logo-transp.png">
+    <link rel="icon" type="image/png" href="resource/img/logo-transp.png">
     <title>Ballers Club</title>
 </head>
 
@@ -148,7 +148,7 @@ require_once 'resource/php/init.php';
         $view = new view();
         if (isset($_POST['search-btn'])) {
             $view->viewSpecificProduct();
-        } else if ($_POST['home']) {
+        } else if (isset($_POST['home'])) {
             $view->viewAvailShoes();
             $view->viewUnavailShoes();
         } else {
@@ -159,6 +159,91 @@ require_once 'resource/php/init.php';
         // $view->viewSpecificProduct();
         ?>
     </div>
+    <!-- modals -->
+    <div class="modals">
+        <div class="modal" id="modalSuccess" tabindex="-1">\
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="resource/img/success.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+                        <h5 class="modal-title">Success!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Nice! The shoe has been successfully inserted in the system!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insert Fail Modal -->
+        <div class="modal" id="modalFail" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="resource/img/error.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+                        <h5 class="modal-title">Error!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>The shoe you entered already exist.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Success Modal -->
+        <div class="modal" id="modalDelete" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="resource/img/success.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+                        <h5 class="modal-title">Success!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Nice! Successfully deleted!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Failed Shoe Modal -->
+        <div class="modal" id="modalSearchFail" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="resource/img/error.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+                        <h5 class="modal-title">Error!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>No results found for the provided keyword!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -166,4 +251,5 @@ require_once 'resource/php/init.php';
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>
+
 </html>
