@@ -24,10 +24,10 @@ require_once 'resource/php/init.php';
         </a>
         <h1 class="mr-auto text-light page-title">Ballers Club</h1>
         <form class="form-inline mr-3" action="" method="POST">
-            <button class="btn btn-light " name="home">Home</button>
+            <button class="btn btn-outline-light my-2 my-sm-0 home" name="home">Home</button>
         </form>
         <form class="form-inline" method='POST'>
-            <input type="text" name="search_keyword" class="form-control" placeholder="Search for a Product" aria-label="Search" required>
+            <input type="text" name="search_keyword" class="form-control search-product" placeholder="Search for a Product" aria-label="Search" required>
             <button class="btn btn-outline-light my-2 my-sm-0" name="search-btn" type="submit">Search</button>
         </form>
     </nav>
@@ -125,24 +125,23 @@ require_once 'resource/php/init.php';
                 </div>
 
                 <!-- Insert Image -->
-                <!-- <div class="col-md form-group">
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <input type="file" class="form-control-file" id="image" name="image">
-                        </div>
-                    </form>
+                <!-- <div class="custom-file col-md-2">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
                 </div> -->
+
 
                 <!-- Button -->
                 <div class="col-md form-group">
-                    <input class="btn btn-light" type="submit" value="Add Product" id="add-product-btn">
+                    <input class="btn bg-custom btn-outline-light my-2 my-sm-0 add-product" type="submit" value="Finish" id="add-product-btn">
                 </div>
 
             </div>
         </form>
     </div>
 
-
+    <!-- View Functions -->
     <div class="container-fluid">
         <?php
         $view = new view();
@@ -236,6 +235,26 @@ require_once 'resource/php/init.php';
                     </div>
                     <div class="modal-body">
                         <p>No results found for the provided keyword!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Input Equal Zero Modal -->
+        <div class="modal" id="modalEqualZero" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img src="resource/img/error.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+                        <h5 class="modal-title">Error!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>We don't accept out of stocked shoes or free shoes, we're not a charity!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

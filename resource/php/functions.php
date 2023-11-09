@@ -1,22 +1,32 @@
 <?php
 function insertSh()
 {
-    if (!empty($_POST['brands']) && !empty($_POST['product_names']) && !empty($_POST['sizes']) && !empty($_POST['colors']) && !empty($_POST['prices']) && !empty($_POST['quantity'])) {
-        $insert = new insert($_POST['brands'], $_POST['product_names'], $_POST['sizes'], $_POST['colors'], $_POST['prices'], $_POST['quantity']);
-        if ($insert->insertShoes()) {
+    if (!empty($_POST['brands']) && !empty($_POST['product_names']) && !empty($_POST['sizes']) && !empty($_POST['colors']) && !empty($_POST['prices']) && isset($_POST['quantity'])) {
+        if ($_POST['quantity'] === 0 || $_POST['prices'] === 0){
             echo '<script>';
             echo 'document.addEventListener("DOMContentLoaded", function() {';
-            echo '    var modalSuccess = new bootstrap.Modal(document.getElementById("modalSuccess"));';
-            echo '    modalSuccess.show();';
+            echo '    var modalEqualZero = new bootstrap.Modal(document.getElementById("modalEqualZero"));';
+            echo '    modalEqualZero.show();';
             echo '});';
             echo '</script>';
         } else {
-            echo '<script>';
-            echo 'document.addEventListener("DOMContentLoaded", function() {';
-            echo '    var modalFail = new bootstrap.Modal(document.getElementById("modalFail"));';
-            echo '    modalFail.show();';
-            echo '});';
-            echo '</script>';
+            $insert = new insert($_POST['brands'], $_POST['product_names'], $_POST['sizes'], $_POST['colors'],$_POST['prices'], $_POST['quantity']);
+
+            if ($insert->insertShoes()) {
+                echo '<script>';
+                echo 'document.addEventListener("DOMContentLoaded", function() {';
+                echo '    var modalSuccess = new bootstrap.Modal(document.getElementById("modalSuccess"));';
+                echo '    modalSuccess.show();';
+                echo '});';
+                echo '</script>';
+            } else {
+                echo '<script>';
+                echo 'document.addEventListener("DOMContentLoaded", function() {';
+                echo '    var modalFail = new bootstrap.Modal(document.getElementById("modalFail"));';
+                echo '    modalFail.show();';
+                echo '});';
+                echo '</script>';
+            }
         }
     }
 }
@@ -43,7 +53,8 @@ function searchBarNotif()
     echo '    var modalSearchFail = new bootstrap.Modal(document.getElementById("modalSearchFail"));';
     echo '    modalSearchFail.show();';
     echo '});';
-    echo '</script>';
+    echo 
+    '</script>';
 }
 ?>
 
