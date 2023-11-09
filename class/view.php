@@ -59,18 +59,29 @@ class view extends config
                 </tbody>
             </table>";
         // foreach($result as $row){
+        //     $price = $row['price'];
+        //     $formattedPrice = number_format($price, 2, '.', ',');
         //     echo " <div class='container mb-5'>
-        //     <div class='card'>
+        //     <div class='card shadow'>
         //         <div class='row'>
         //             <div class='col-md-3'>
         //                 <img width='300' height='300' src='https://underarmour.scene7.com/is/image/Underarmour/3026619-101_DEFAULT?rp=standard-30pad|gridTileDesktop&scl=1&fmt=jpg&qlt=50&resMode=sharp2&cache=on,on&bgc=F0F0F0&wid=512&hei=640&size=472,600' alt=''>
         //             </div>
-        //             <div class='col-md-9 '>
-        //                 <div class='card-body'>
-        //                     <strong class='shoe-title h1 ml-3'>Card title</strong>
-        //                     <p class='card-text ml-3'>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        //                     <p class='card-text ml-3'><small class='text-muted'>Last updated 3 mins ago</small></p>
-        //                 </div>
+        //             <div class='col-md-9'>
+        //                 <div class='card-body'>";
+        //                     echo "<strong class='shoe-title h1 ml-3'>$row[product_name]</strong>";
+        //                     echo "<h4 class='card-text mt-2 ml-3'>$row[brand]</h4>";
+        //                     echo "<p><strong class='card-text mt-2 ml-3'>Color: $row[color] Size:$row[size]</strong></p>";
+        //                     echo "<p><strong class='card-text mt-2 ml-3'>Price: ₱$formattedPrice</strong></p>";
+        //                     echo "<p> </p>";
+        //                     echo "<p> </p>";
+        //                     echo "<p> </p>";
+        //                     echo "<p> </p>";
+        //                     echo "<div class='btn-group col-md-4 ml-auto'>";
+        //                     echo "<button class='btn bg-custom btn-outline-dark text-light shadow my-2 my-sm-0 rounded' name='edit' value='$row[id]'>Edit</button>";
+        //                     echo "<button class='btn btn-sm btn-danger shadow rounded ml-2' name='delete' value='$row[id]'>Delete</button>";
+        //                     echo "</div>";
+        //                 echo "</div>
         //             </div>
         //         </div>
         //     </div>
@@ -176,7 +187,7 @@ class view extends config
                         <th class='text-center'>Price</th>
                         <th class='text-center'>Status</th>
                         <th class='text-center'>Quantity</th>
-                        <th class='text-center'>Last Re-Stock</th>
+                        <th class='text-center'>Last Re-stock</th>
                         <th class='text-center'>Actions</th>
                     </tr>
                 </thead>
