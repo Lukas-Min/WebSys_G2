@@ -37,6 +37,6 @@ body{
     max-height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Make the background image fixed */
+    background-attachment: fixed; 
     background-position: center;
-}
+} 

@@ -102,7 +102,7 @@ class view extends config
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if (!empty($results)) {
-                echo "<h1 class='title-available mb-3 ml-2'>Search Result</h1>";
+                echo "<h1 class='title-available mb-3 ml-2 text-light'>Search Result</h1>";
                 echo
                 "<table class='table table-dark table-striped rounded-table'>
                 <thead>
