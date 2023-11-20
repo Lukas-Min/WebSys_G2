@@ -6,28 +6,35 @@ class view extends config
     {
         $con = $this->con();
         ob_start();
-        $sql = "SELECT * FROM `inventory_tbl` WHERE `status` = ('Available')";
+    
+        // Check if a column for sorting is specified
+        $sortBy = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'id';
+        // Initialize the sorting order
+        $sortOrder = isset($_GET['order']) ? $_GET['order'] : 'asc';
+    
+        $sql = "SELECT * FROM `inventory_tbl` WHERE `status` = ('Available') ORDER BY $sortBy $sortOrder";
         $data = $con->prepare($sql);
         $data->execute();
         $result = $data->fetchAll(PDO::FETCH_ASSOC);
-        echo "<h1 class='title-available mb-3 ml-2 text-light'>Available Shoes</h1>";
-        echo
-        "<table class='table table-dark table-striped rounded-table'>
+    
+        echo "<h1 class='title-available mb-3 ml-2 text-light' style='color: white;'>Available Shoes</h1>";
+        echo "<table class='table table-dark table-striped rounded-table'>
                 <thead>
                     <tr class='bg-custom text-light'>
-                        <th class='text-center'>Shoe Code</th>
-                        <th>Brand</th>
-                        <th>Shoe Model</th>
+                        <th><a href='?sort_by=id&amp;order=" . ($sortBy === 'id' && $sortOrder === 'asc' ? 'desc' : 'asc') . "'>ID " . ($sortBy === 'id' ? ($sortOrder === 'asc' ? '▲' : '▼') : '') . "</a></th>
+                        <th><a href='?sort_by=brand&amp;order=" . ($sortBy === 'brand' && $sortOrder === 'asc' ? 'desc' : 'asc') . "'>Brand " . ($sortBy === 'brand' ? ($sortOrder === 'asc' ? '▲' : '▼') : '') . "</a></th>
+                        <th><a href='?sort_by=product_name&amp;order=" . ($sortBy === 'product_name' && $sortOrder === 'asc' ? 'desc' : 'asc') . "'>Shoe Model " . ($sortBy === 'product_name' ? ($sortOrder === 'asc' ? '▲' : '▼') : '') . "</a></th>
                         <th class='text-center'>Size</th>
                         <th>Color</th>
-                        <th class='text-center'>Price</th>
-                        <th class='text-center'>Status</th>
-                        <th class='text-center'>Quantity</th>
-                        <th class='text-center'>Date Added</th>
+                        <th class='text-center'><a href='?sort_by=price&amp;order=" . ($sortBy === 'price' && $sortOrder === 'asc' ? 'desc' : 'asc') . "'>Price " . ($sortBy === 'price' ? ($sortOrder === 'asc' ? '▲' : '▼') : '') . "</a></th>
+                        <th class='text-center'><a href='?sort_by=status&amp;order=" . ($sortBy === 'status' && $sortOrder === 'asc' ? 'desc' : 'asc') . "'>Status " . ($sortBy === 'status' ? ($sortOrder === 'asc' ? '▲' : '▼') : '') . "</a></th>
+                        <th class='text-center'><a href='?sort_by=quantity&amp;order=" . ($sortBy === 'quantity' && $sortOrder === 'asc' ? 'desc' : 'asc') . "'>Quantity " . ($sortBy === 'quantity' ? ($sortOrder === 'asc' ? '▲' : '▼') : '') . "</a></th>
+                        <th class='text-center'><a href='?sort_by=date_added&amp;order=" . ($sortBy === 'date_added' && $sortOrder === 'asc' ? 'desc' : 'asc') . "'>Date Added " . ($sortBy === 'date_added' ? ($sortOrder === 'asc' ? '▲' : '▼') : '') . "</a></th>
                         <th class='text-center'>Actions</th>
                     </tr>
                 </thead>
                 <tbody>";
+    
         foreach ($result as $row) {
             echo "<tr class='text-light'>";
             echo "<td class='text-center'>$row[id]</td>";
@@ -45,48 +52,19 @@ class view extends config
             echo "<td class='text-center'>$formattedDate</td>";
             echo "<form method='post'>";
             echo "<td>";
-            // echo "<button class='btn btn-sm btn-info' name='edit' value='$row[id]'>Edit</button>";
-            // echo "<button class='btn btn-sm btn-danger' name='delete' value='$row[id]'>Delete</button>";
             echo "<div class='btn-group'>";
             echo "<button class='btn btn-sm text-custom btn-light mr-2 rounded' name='edit' value='$row[id]'>Edit</button>";
             echo "<button class='btn btn-sm btn-danger rounded' name='delete' value='$row[id]'>Delete</button>";
-            echo "</div>";
+            echo "</div>";  
             echo " </td>";
             echo "</form>";
             echo "</tr>";
         }
+    
         echo " 
                 </tbody>
             </table>";
-        // foreach($result as $row){
-        //     $price = $row['price'];
-        //     $formattedPrice = number_format($price, 2, '.', ',');
-        //     echo " <div class='container mb-5'>
-        //     <div class='card shadow'>
-        //         <div class='row'>
-        //             <div class='col-md-3'>
-        //                 <img width='300' height='300' src='https://underarmour.scene7.com/is/image/Underarmour/3026619-101_DEFAULT?rp=standard-30pad|gridTileDesktop&scl=1&fmt=jpg&qlt=50&resMode=sharp2&cache=on,on&bgc=F0F0F0&wid=512&hei=640&size=472,600' alt=''>
-        //             </div>
-        //             <div class='col-md-9'>
-        //                 <div class='card-body'>";
-        //                     echo "<strong class='shoe-title h1 ml-3'>$row[product_name]</strong>";
-        //                     echo "<h4 class='card-text mt-2 ml-3'>$row[brand]</h4>";
-        //                     echo "<p><strong class='card-text mt-2 ml-3'>Color: $row[color] Size:$row[size]</strong></p>";
-        //                     echo "<p><strong class='card-text mt-2 ml-3'>Price: ₱$formattedPrice</strong></p>";
-        //                     echo "<p> </p>";
-        //                     echo "<p> </p>";
-        //                     echo "<p> </p>";
-        //                     echo "<p> </p>";
-        //                     echo "<div class='btn-group col-md-4 ml-auto'>";
-        //                     echo "<button class='btn bg-custom btn-outline-dark text-light shadow my-2 my-sm-0 rounded' name='edit' value='$row[id]'>Edit</button>";
-        //                     echo "<button class='btn btn-sm btn-danger shadow rounded ml-2' name='delete' value='$row[id]'>Delete</button>";
-        //                     echo "</div>";
-        //                 echo "</div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>";
-        // }
+            
     }
     public function viewSpecificProduct()
     {
@@ -224,3 +202,4 @@ class view extends config
             </table>";
     }
 }
+?>
