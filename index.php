@@ -51,7 +51,7 @@ require_once 'resource/php/init.php';
                 <!-- Brand -->
                 <div class="col-md-2 form-group">
                     <select class="form-control" name="brands" required>
-                        <option value="" disabled selected>Brand</option>
+                        <option value="" disabled hidden selected>Brand</option>
                         <option value="Adidas">Adidas</option>
                         <option value="Fila">Fila</option>
                         <option value="New Balance">New Balance</option>
@@ -71,7 +71,7 @@ require_once 'resource/php/init.php';
                 <!-- Size -->
                 <div class="col-md- form-group">
                     <select class="form-control" name="sizes" required>
-                        <option value="" disabled selected>Size</option>
+                        <option value=""hidden disabled selected>Size</option>
                         <option value="34.0">EU 34.0</option>
                         <option value="34.5">EU 34.5</option>
                         <option value="35.0">EU 35.0</option>
